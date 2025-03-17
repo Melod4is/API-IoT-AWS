@@ -1,0 +1,63 @@
+type Ciudad {
+  cod_ciudad: ID!
+  ciudad: String!
+  departamento: String!
+}
+
+type Usuario {
+  id_usuario: ID!
+  nombre: String!
+  tipo_doc: String!
+  documento: Int!
+  correo: String!
+  cod_ciudad: Int!
+  fecha_registro: String!
+}
+
+type Especie {
+  cod_especie: ID!
+  nombre_comun: String!
+  nombre_cientifico: String!
+  tipo: String!
+}
+
+type Planta {
+  id_planta: ID!
+  edad: Int!
+  estado: String!
+  cod_especie: Int!
+  id_usuario: Int!
+}
+
+type Dispositivo {
+  id_dispositivo: ID!
+  nombre_dispositivo: String!
+  latitud: Float!
+  longitud: Float!
+  temperatura: Float
+  humedad: Float
+  id_planta: Int!
+}
+
+type Query {
+  # Obtener todos los registros de una tabla
+  obtenerCiudades: [Ciudad]!
+  obtenerUsuarios: [Usuario]!
+  obtenerEspecies: [Especie]!
+  obtenerPlantas: [Planta]!
+  obtenerDispositivos: [Dispositivo]!
+
+  # Obtener un registro por ID
+  obtenerCiudadPorId(cod_ciudad: Int!): Ciudad
+  obtenerUsuarioPorId(id_usuario: Int!): Usuario
+  obtenerEspeciePorId(cod_especie: Int!): Especie
+  obtenerPlantaPorId(id_planta: Int!): Planta
+  obtenerDispositivoPorId(id_dispositivo: Int!): Dispositivo
+
+  # Contar el total de registros en cada tabla
+  totalCiudades: Int!
+  totalUsuarios: Int!
+  totalEspecies: Int!
+  totalPlantas: Int!
+  totalDispositivos: Int!
+}
